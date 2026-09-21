@@ -1,0 +1,296 @@
+/* ==========================================================================
+   1. Design Tokens & Global Reset
+   ========================================================================== */
+:root {
+    --bg-dark: #120305;
+    --burgundy-deep: #2B0C0F;
+    --maroon-bright: #6D0808;
+    --sage-gray: #757D6F;
+    --cream-light: #EEEAD7;
+    --card-bg: rgba(43, 12, 15, 0.65);
+    --card-border: rgba(117, 125, 111, 0.25);
+    --glow-effect: rgba(109, 8, 8, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(109, 8, 8, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(43, 12, 15, 0.8) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(117, 125, 111, 0.08) 0%, transparent 70%);
+    color: var(--cream-light);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1.5rem;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   2. Main Container
+   ========================================================================== */
+.page-container {
+    position: relative;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 3.5rem 3rem;
+    max-width: 850px;
+    width: 100%;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--sage-gray);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--cream-light);
+    transform: translateX(-4px);
+}
+
+/* ==========================================================================
+   3. Expanded Interactive Piano
+   ========================================================================== */
+.piano-wrapper {
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.piano-instruction {
+    font-size: 0.85rem;
+    color: var(--sage-gray);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.piano-keys {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 110px;
+    width: 100%;
+    background: var(--burgundy-deep);
+    padding: 10px 12px 14px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    box-shadow: 
+        inset 0 6px 15px rgba(0,0,0,0.6),
+        0 10px 25px rgba(0,0,0,0.4);
+    user-select: none;
+    overflow-x: auto;
+}
+
+.key {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    transition: transform 0.08s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.key.white {
+    flex: 1 0 28px;
+    max-width: 42px;
+    height: 100%;
+    background: linear-gradient(to bottom, #f7f5ee 0%, var(--cream-light) 100%);
+    margin: 0 1px;
+    border-radius: 0 0 6px 6px;
+    z-index: 1;
+    box-shadow: inset 0 -4px 6px rgba(0,0,0,0.15), 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.key.black {
+    flex: 0 0 20px;
+    height: 60%;
+    background: linear-gradient(to bottom, #111 0%, #2b0b0e 100%);
+    margin: 0 -11px;
+    z-index: 2;
+    border-radius: 0 0 4px 4px;
+    border: 1px solid var(--maroon-bright);
+    box-shadow: inset 0 -2px 4px rgba(255,255,255,0.15), 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.key.white:hover {
+    background: #ffffff;
+}
+
+.key.black:hover {
+    background: var(--maroon-bright);
+}
+
+.key.active, .key:active {
+    transform: translateY(4px);
+}
+
+.key.white.active {
+    background: var(--sage-gray);
+}
+
+.key.black.active {
+    background: #e63946;
+}
+
+/* ==========================================================================
+   4. Typography & Content
+   ========================================================================== */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--cream-light);
+    margin-bottom: 0.75rem;
+}
+
+.intro-text {
+    font-size: 1.15rem;
+    color: var(--cream-light);
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.intro-text strong {
+    color: #fff;
+    border-bottom: 2px solid var(--maroon-bright);
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--cream-light);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background: var(--maroon-bright);
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+p {
+    color: #d1cdbf;
+    margin-bottom: 1.25rem;
+}
+
+/* ==========================================================================
+   5. Image Section
+   ========================================================================== */
+.image-wrapper {
+    position: relative;
+    margin: 2rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.profile-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover .profile-img {
+    transform: scale(1.03);
+}
+
+.image-badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(43, 12, 15, 0.85);
+    backdrop-filter: blur(8px);
+    color: var(--cream-light);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid var(--card-border);
+}
+
+/* ==========================================================================
+   6. Interest List & Contact Card
+   ========================================================================== */
+.interest-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.interest-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(117, 125, 111, 0.15);
+}
+
+.interest-list .icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, rgba(109, 8, 8, 0.25) 0%, rgba(43, 12, 15, 0.4) 100%);
+    border: 1px solid var(--maroon-bright);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-top: 2.5rem;
+}
+
+.contact-card h3 {
+    color: var(--cream-light);
+    margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+    margin-bottom: 0;
+}
+
+footer h5 {
+    text-align: center;
+    color: var(--sage-gray);
+    font-weight: 400;
+    font-size: 0.95rem;
+    margin-top: 3rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .page-container { padding: 2rem 1.25rem; }
+    h1 { font-size: 2rem; }
+    .piano-keys { height: 90px; }
+}
