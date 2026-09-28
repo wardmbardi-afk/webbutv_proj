@@ -11,44 +11,11 @@
     <main class="page-container">
         
         <!-- Navigering tillbaka -->
-        <a href="iindex.html" class="back-link">
+        <a href="index.html" class="back-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             <span>Tillbaka till startsidan</span>
         </a>
 
-        <!-- Interactive 2-Octave Piano -->
-        <div class="piano-wrapper">
-            <p class="piano-instruction">🎹 Klicka på tangenterna för att spela!</p>
-            <div class="piano-keys">
-                <!-- Octave 1 -->
-                <div class="key white" data-note="261.63"></div> <!-- C4 -->
-                <div class="key black" data-note="277.18"></div> <!-- C#4 -->
-                <div class="key white" data-note="293.66"></div> <!-- D4 -->
-                <div class="key black" data-note="311.13"></div> <!-- D#4 -->
-                <div class="key white" data-note="329.63"></div> <!-- E4 -->
-                <div class="key white" data-note="349.23"></div> <!-- F4 -->
-                <div class="key black" data-note="369.99"></div> <!-- F#4 -->
-                <div class="key white" data-note="392.00"></div> <!-- G4 -->
-                <div class="key black" data-note="415.30"></div> <!-- G#4 -->
-                <div class="key white" data-note="440.00"></div> <!-- A4 -->
-                <div class="key black" data-note="466.16"></div> <!-- A#4 -->
-                <div class="key white" data-note="493.88"></div> <!-- B4 -->
-
-                <!-- Octave 2 -->
-                <div class="key white" data-note="523.25"></div> <!-- C5 -->
-                <div class="key black" data-note="554.37"></div> <!-- C#5 -->
-                <div class="key white" data-note="587.33"></div> <!-- D5 -->
-                <div class="key black" data-note="622.25"></div> <!-- D#5 -->
-                <div class="key white" data-note="659.25"></div> <!-- E5 -->
-                <div class="key white" data-note="698.46"></div> <!-- F5 -->
-                <div class="key black" data-note="739.99"></div> <!-- F#5 -->
-                <div class="key white" data-note="783.99"></div> <!-- G5 -->
-                <div class="key black" data-note="830.61"></div> <!-- G#5 -->
-                <div class="key white" data-note="880.00"></div> <!-- A5 -->
-                <div class="key black" data-note="932.33"></div> <!-- A#5 -->
-                <div class="key white" data-note="987.77"></div> <!-- B5 -->
-            </div>
-        </div>
 
         <header>
             <h1>Välkommen till min sida!</h1>
@@ -95,57 +62,9 @@
         </section>
 
         <footer>
-            <h5>Tack för att du kollar in min sida! ✨</h5>
+            <h3>Tack för att du kollar in min sida! ✨</h3>
         </footer>
 
     </main>
-
-    <!-- Audio Script -->
-    <script>
-        // Initialize Web Audio API context
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        let audioCtx;
-
-        function playPianoTone(freq) {
-            if (!audioCtx) {
-                audioCtx = new AudioContext();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-
-            // Mix triangle wave for warm harmonic piano timbre
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-            // Realistic piano envelope: quick strike + smooth acoustic decay
-            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0.6, audioCtx.currentTime + 0.01);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
-
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-
-            osc.start();
-            osc.stop(audioCtx.currentTime + 1.2);
-        }
-
-        document.querySelectorAll('.key').forEach(key => {
-            const playNote = (e) => {
-                e.preventDefault();
-                const freq = parseFloat(key.getAttribute('data-note'));
-                playPianoTone(freq);
-
-                key.classList.add('active');
-                setTimeout(() => key.classList.remove('active'), 150);
-            };
-
-            key.addEventListener('mousedown', playNote);
-            key.addEventListener('touchstart', playNote);
-        });
-    </script>
 </body>
 </html>
