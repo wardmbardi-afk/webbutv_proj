@@ -194,7 +194,7 @@ h2::before {
 }
 
 p {
-    color: #d1cdbf;
+    color: var(--cream-light);
     margin-bottom: 1.25rem;
 }
 
@@ -274,8 +274,15 @@ p {
 
 .contact-card p {
     margin-bottom: 0;
+    
 }
 
+.contact-card a {
+    color: var(--maroon-bright);
+    text-decoration: none;  
+    font-weight: bold;
+
+}
 footer h5 {
     text-align: center;
     color: var(--sage-gray);
