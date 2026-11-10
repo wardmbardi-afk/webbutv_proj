@@ -75,7 +75,7 @@ if (d<(catSize/2+mouseSize/2)){
 else if(gameState=="GAMEOVER"){
   //when you die
   textSize(60);
-  text("Fuck you",width/2,245 );
+  text("YOU DIED",width/2,245 );
 }
 
 
