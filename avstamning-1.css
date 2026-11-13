@@ -1,8 +1,144 @@
-body{
-    background-color: #002360;
-    color:white;
+:root{
+    --bg-dark: #120305;
+    --burgundy-deep: #2B0C0F;
+    --maroon-bright: #6D0808;
+    --sage-gray: #757D6F;
+    --cream-light: #DDD9CA;
+    --card-bg: rgba(43, 12, 15, 0.65);
+    --card-border: rgba(117, 125, 111, 0.25);
+    --glow-effect: rgba(109, 8, 8, 0.5);
 }
-p{
-    width: 700px;
+/* Grundinställningar */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidhuvud med logotyp */
+header {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 35px 20px 10px;
+    text-align: center;
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Huvudinnehåll */
+main {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #f5efe6; /* Matchar den ljusbeige logotypen */
+    font-size: 2.4rem;
+    margin-bottom: 5px;
+}
+
+/* Datum och tid direkt under huvudrubriken */
+main > p {
+    color: var(--cream-light);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Sektioner utformade som tydliga kort */
+section {
+    background-color: var(--card-bg);
+    border-left: 4px solid var(--cream-light);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #f5efe6;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+p {
+    max-width: 700px;
     padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Bild i sektionen */
+section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: block;
+}
+
+/* Punktlista med aktiviteter */
+ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+li strong {
+    color: var(--cream-light);
+}
+
+/* Länkar */
+a {
+    color: var(--cream-light);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+a:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+/* Google Maps-karta */
+iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Sidfot */
+footer {
+    background-color: var(--burgundy-deep);
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.95rem;
+}
+
+footer p {
+    max-width: none;
+    margin: 5px auto;
+    padding-bottom: 5px;
+}
+
+address {
+    font-style: normal;
+    margin: 10px 0;
 }
