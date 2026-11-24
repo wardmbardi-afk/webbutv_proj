@@ -2,7 +2,7 @@
     --bg-dark: #120305;
     --burgundy-deep: #2B0C0F;
     --maroon-bright: #6D0808;
-    --sage-gray: #757D6F;
+    --sage-gray: #91948f;
     --cream-light: #DDD9CA;
     --card-bg: rgba(43, 12, 15, 0.65);
     --card-border: rgba(117, 125, 111, 0.25);
@@ -141,4 +141,20 @@ footer p {
 address {
     font-style: normal;
     margin: 10px 0;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--sage-gray);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+.back-link:hover {
+    color: var(--cream-light);
+    transform: translateX(-4px);
 }
