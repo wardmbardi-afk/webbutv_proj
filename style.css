@@ -135,6 +135,8 @@ h3 {
     box-shadow: 0 12px 28px -6px var(--glow-effect);
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    min-width: 250px;
+    margin: 0.2rem;
 }
 
 .btn:hover {
